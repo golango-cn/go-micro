@@ -18,3 +18,18 @@ POST http://127.0.0.1:8080/department/departments
 Content-Type: application/x-www-form-urlencoded
 
 ###
+
+
+POST http://127.0.0.1:8080/employee/login
+Content-Type: application/x-www-form-urlencoded
+
+
+name=Mary&pwd=123
+
+###
+
+###
+curl --request POST \
+  --url http://127.0.0.1:8080/employee/logout \
+  --cookie 'remember-me-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODgzNDQwNTIsImp0aSI6Ik1hcnkiLCJpYXQiOjE1ODU3NTIwNTIsImlzcyI6ImJvb2subWljcm8ubXUiLCJuYmYiOjE1ODU3NTIwNTIsInN1YiI6Ik1hcnkifQ.PfSgWJcSVyUnQPMcuUATjVyp38GkUvWOlIflohcmI7Y'
+###

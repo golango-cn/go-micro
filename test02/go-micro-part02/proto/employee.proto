@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+import "common/baseRequest.proto";
+import "common/baseResponse.proto";
+
+package go.svr.proto.proto;
+
+service EmployeeService {
+    rpc GetEmployees (GetEmployeeRequest) returns (GetEmployeeResponse) {
+    }
+
+    rpc Login(LoginRequest) returns (LoginResponse) {
+    }
+
+    rpc Logout(LogoutRequest) returns (LogoutResponse) {
+    }
+}
+
+message employee {
+    int32 empno = 1;
+    string birthDate = 2;
+    string firstName = 3;
+    string lastName = 4;
+    string gender = 5;
+    string hireDate = 6;
+}
+
+message LoginRequest{
+    common.baseRequest baseRequest = 1;
+    string firstName = 2;
+    string token = 3;
+}
+
+message LoginResponse {
+    common.baseResponse baseResponse = 5;
+    employee employee = 1;
+    string token = 2;
+}
+
+message LogoutRequest{
+    common.baseRequest baseRequest = 1;
+    string token = 2;
+}
+
+message LogoutResponse {
+    common.baseResponse baseResponse = 1;
+}
+
+message GetEmployeeRequest {
+    common.baseRequest baseRequest = 1;
+    string firstName = 2;
+}
+
+message GetEmployeeResponse {
+    common.baseResponse baseResponse = 1;
+    repeated employee employees = 2;
+}

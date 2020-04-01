@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+import "common/baseRequest.proto";
+import "common/baseResponse.proto";
+
+package go.svr.proto.proto;
+
+service TokenService {
+    rpc CreateToken (TokenRequest) returns (TokenResponse) {
+    }
+    rpc DeleteToken (TokenRequest) returns (TokenResponse) {
+    }
+}
+
+
+message TokenRequest {
+    common.baseRequest baseRequest = 1;
+    uint64 userId = 2;
+    string userName = 3;
+    string token = 4;
+}
+
+message TokenResponse {
+    common.baseResponse baseResponse = 1;
+    string token = 3;
+}
