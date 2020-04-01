@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+import "common/baseRequest.proto";
+import "common/baseResponse.proto";
+
+package go.svr.proto.proto;
+
+service DepartmentService {
+    rpc GetDeparments (GetDeparmentRequest) returns (GetDeparmentResponse) {
+    }
+}
+
+message department {
+    string deptNo = 1;
+    string deptName = 2;
+}
+
+message GetDeparmentRequest {
+    common.baseRequest baseRequest = 1;
+}
+
+message GetDeparmentResponse {
+    common.baseResponse baseResponse = 1;
+    repeated department departments = 2;
+}
