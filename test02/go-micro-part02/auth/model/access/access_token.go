@@ -5,6 +5,7 @@ import (
 	"github.com/dgrijalva/jwt-go"
 	"github.com/micro/go-micro/v2/broker"
 	log "github.com/micro/go-micro/v2/logger"
+	"github.com/micro/go-plugins/broker/rabbitmq/v2"
 	"go-micro/go-micro-part02/basic/config"
 )
 
@@ -58,11 +59,27 @@ func (s *TokenService) DelUserAccessToken(tk string) (err error) {
 		return fmt.Errorf("[DelUserAccessToken] 清除用户token，err: %s", err)
 	}
 
+	fmt.Println("广播消息", claims.Subject)
 	// 广播删除
 	msg := &broker.Message{
 		Body: []byte(claims.Subject),
 	}
-	if err := broker.Publish(tokenExpiredTopic, msg); err != nil {
+	//if err := broker.Publish(tokenExpiredTopic, msg); err != nil {
+	//	log.Infof("[pub] 发布token删除消息失败： %v", err)
+	//} else {
+	//	fmt.Println("[pub] 发布token删除消息：", string(msg.Body))
+	//}
+
+	//bk1 := broker.NewBroker(
+	//	broker.Addrs(fmt.Sprintf("%s:%d", "127.0.0.1", 11089)),
+	//)
+	bk1 := rabbitmq.NewBroker(
+		broker.Addrs("amqp://test01:test01@140.143.0.152:5672"),
+	)
+	bk1.Init()
+	bk1.Connect()
+
+	if err := bk1.Publish(tokenExpiredTopic, msg); err != nil {
 		log.Infof("[pub] 发布token删除消息失败： %v", err)
 	} else {
 		fmt.Println("[pub] 发布token删除消息：", string(msg.Body))
