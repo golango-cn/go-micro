@@ -1,0 +1,31 @@
+# curl http://127.0.0.1:8080/v2/learning/hi  --header 'Content-Type: application/x-www-form-urlencoded' --data '{"name":"Micro"}'
+POST http://127.0.0.1:8080/v2/learning/hi
+Content-Type: application/x-www-form-urlencoded
+
+{"name":"Micro"}
+
+###
+
+POST http://127.0.0.1:8080/v2/learning/greeter/hi
+Content-Type: application/x-www-form-urlencoded
+
+{"name":"Micro"}
+
+###
+
+# curl http://127.0.0.1:8080/learning/greeter/hi  --header 'Content-Type: application/x-www-form-urlencoded' --data '{"name":"Micro"}'
+POST http://127.0.0.1:8080/learning/greeter/hi
+Content-Type: application/x-www-form-urlencoded
+
+{"name":"Micro"}
+
+###
+
+
+POST http://127.0.0.1:8080/learning/learning/hi
+Content-Type: application/x-www-form-urlencoded
+
+{"name":"Micro"}
+
+###
+
