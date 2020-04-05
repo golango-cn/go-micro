@@ -1,0 +1,13 @@
+app:
+  jwt:
+    secretKey: W6VjDud2W1kMG3BicbMNlGgI4ZfcoHtMGLWr
+  redis:
+    enabled: true
+    conn: 127.0.0.1:6379
+    dbNum: 8
+    password:
+    timeout: 3000
+  etcd:
+    enabled: true
+    host: 127.0.0.1
+    port: 2379

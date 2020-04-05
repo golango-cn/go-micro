@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package common;
+
+message baseResponse {
+    bool isSuccess = 1;
+    string errorMessage = 2;
+}
