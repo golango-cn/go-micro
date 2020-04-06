@@ -48,7 +48,7 @@ func New(w http.ResponseWriter, r *http.Request) {
 	// 返回结果
 	response := map[string]interface{}{}
 
-	userId := int64(session.GetSession(r).Values["userId"].(float64))
+	userId := int64(session.GetSession(r).Values["userId"].(int32))
 
 	// 调用后台服务
 	rsp, err := orderService.New(context.TODO(), &orders.Request{

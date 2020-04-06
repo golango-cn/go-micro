@@ -12,7 +12,7 @@ import (
 import (
 	context "context"
 	client "github.com/micro/go-micro/v2/client"
-	server "github.com/micro/go-micro/v2/grpc-server"
+	server "github.com/micro/go-micro/v2/server"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.

@@ -3,8 +3,6 @@ package handler
 import (
 	"context"
 	"encoding/json"
-	"go-micro/go-micro-part03/basic/config"
-	"go-micro/go-micro-part03/basic/token"
 	"go-micro/go-micro-part03/plugins/session"
 	"net/http"
 	"time"
@@ -97,8 +95,19 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	w.Header().Add("Content-Type", "application/json; charset=utf-8")
 	loginResp.Token = tokenResp.Token
 
-	token, _ := token.ParseToken(tokenResp.Token, config.AppConfig.Jwt.SecretKey)
-	session.CreateSession(w, r, token)
+	// 过期30分钟
+	expire := time.Now().Add(30 * time.Minute)
+	cookie := http.Cookie{Name: "remember-me-token", Value: tokenResp.Token, Path: "/", Expires: expire, MaxAge: 90000}
+	http.SetCookie(w, &cookie)
+
+	// 同步到session中
+	sess := session.GetSession2(w, r)
+	sess.Values["userId"] = loginResp.Employee.Empno
+	sess.Values["userName"] = loginResp.Employee.FirstName
+	_ = sess.Save(r, w)
+
+	//token, _ := token.ParseToken(tokenResp.Token, config.AppConfig.Jwt.SecretKey)
+	//session.CreateSession(w, r, token)
 	//
 	//w.Header().Add("Session-Id", session.ID)
 
