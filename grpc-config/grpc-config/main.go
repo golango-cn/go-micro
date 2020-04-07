@@ -7,13 +7,14 @@ import (
 	"go-micro/grpc-config/grpc-config/basic"
 	"go-micro/grpc-config/grpc-config/basic/common"
 	"go-micro/grpc-config/grpc-config/basic/config"
+	"time"
 
 	_ "github.com/micro/go-micro/v2/config"
 	_ "github.com/micro/go-micro/v2/logger"
 )
 
 var appName = "auth_srv"
-var cfg     = &authCfg{}
+var cfg = &authCfg{}
 
 func main() {
 	initCfg()
@@ -21,7 +22,7 @@ func main() {
 	fmt.Println("cfg", cfg)
 
 	ch := make(chan int)
-	<- ch
+	<-ch
 }
 
 type authCfg struct {
@@ -30,7 +31,7 @@ type authCfg struct {
 
 func initCfg() {
 	source := grpc.NewSource(
-		grpc.WithAddress("127.0.0.1:9600"),
+		grpc.WithAddress("grpc1:9600"),
 		grpc.WithPath("micro"),
 	)
 
@@ -38,9 +39,18 @@ func initCfg() {
 
 	err := config.C().App(appName, cfg)
 	if err != nil {
-		panic(err)
+		log.Info(err)
 	}
 
+	go func() {
+		ticker := time.NewTicker(time.Second * 3)
+
+		for {
+			<-ticker.C
+			log.Infof("[initCfg] 配置，cfg：%v", cfg)
+		}
+
+	}()
 	log.Infof("[initCfg] 配置，cfg：%v", cfg)
 
 	return
