@@ -41,9 +41,9 @@ func InitRedis() {
 
 func initSingle() {
 
-	conn := config.AppConfig.Redis.Conn
-	password := config.AppConfig.Redis.Password
-	db := config.AppConfig.Redis.DbNum
+	conn := config.AppConfig.App.Redis.Conn
+	password := config.AppConfig.App.Redis.Password
+	db := config.AppConfig.App.Redis.DbNum
 
 	client = redis.NewClient(&redis.Options{
 		Addr:     conn,

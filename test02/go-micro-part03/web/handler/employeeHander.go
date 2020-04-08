@@ -3,18 +3,22 @@ package handler
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"go-micro/go-micro-part03/plugins/session"
 	"net/http"
 	"time"
 
 	"github.com/micro/go-micro/v2/client"
-	log "github.com/micro/go-micro/v2/logger"
+	//log "github.com/micro/go-micro/v2/logger"
 
+	z "go-micro/go-micro-part03/plugins/zap"
 	us "go-micro/go-micro-part03/proto"
 )
 
 var employeeService us.EmployeeService
 var tokenService us.TokenService
+
+var log = z.GetLogger()
 
 func Init() {
 	employeeService = us.NewEmployeeService("mu.micro.book.srv.employee", client.DefaultClient)
@@ -56,7 +60,7 @@ func GetEmployees(w http.ResponseWriter, r *http.Request) {
 // 登录
 func Login(w http.ResponseWriter, r *http.Request) {
 
-	log.Info("request start")
+	log.Info("request start123123")
 
 	// 只接受POST请求
 	if r.Method != "POST" {
@@ -111,6 +115,8 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	//
 	//w.Header().Add("Session-Id", session.ID)
 
+	log.Info(fmt.Sprintf("Token %s", tokenResp.Token))
+
 	// 返回JSON结构
 	if err := json.NewEncoder(w).Encode(loginResp); err != nil {
 		http.Error(w, err.Error(), 500)
@@ -135,7 +141,7 @@ func Logout(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	log.Info("Token", tokenCookie)
+	log.Info(fmt.Sprintf("Token %s", tokenCookie))
 
 	// 删除token
 	_, err = tokenService.DeleteToken(context.TODO(), &us.TokenRequest{

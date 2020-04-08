@@ -1,0 +1,4 @@
+
+micro --registry=etcd list services
+
+micro --registry=etcd get service mu.micro.book.srv.auth

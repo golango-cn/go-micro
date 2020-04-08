@@ -11,3 +11,13 @@ app:
     enabled: true
     host: 127.0.0.1
     port: 2379
+  zap:
+    level: error
+    development: false
+    encoding: json
+    logFileDir:
+    outputPaths: []
+    errorOutputPaths: []
+    maxSize: 50
+    maxBackups: 200
+    maxAge: 10

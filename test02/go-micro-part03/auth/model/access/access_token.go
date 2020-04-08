@@ -28,7 +28,7 @@ func (s *TokenService) MakeAccessToken(subject *Subject) (ret string, err error)
 	claims["UserId"], _ = strconv.ParseUint(subject.ID, 10, 64)
 	claims["UserName"] = subject.Name
 
-	ret, err = token.SignedString([]byte(config.AppConfig.Jwt.SecretKey))
+	ret, err = token.SignedString([]byte(config.AppConfig.App.Jwt.SecretKey))
 	if err != nil {
 		return "", fmt.Errorf("[MakeAccessToken] 创建token失败，err: %s", err)
 	}

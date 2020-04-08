@@ -1,0 +1,21 @@
+{"level":"info","ts":1586312783.650974,"caller":"zap/zap.go:49","msg":"[initLogger] zap plugin initializing completed"}
+{"level":"info","ts":1586312796.2039838,"caller":"handler/employeeHander.go:63","msg":"request start"}
+{"level":"info","ts":1586312816.6944268,"caller":"handler/employeeHander.go:118","msg":"Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOjEwMDAzLCJVc2VyTmFtZSI6IlBhcnRvIn0.J0JPwc4IPBg4HKXL1S1Y3ixD1XZzkPJDF7rj8wdCuAo"}
+{"level":"info","ts":1586313476.5271318,"caller":"zap/zap.go:49","msg":"[initLogger] zap plugin initializing completed"}
+{"level":"info","ts":1586313490.8284612,"caller":"zap/zap.go:49","msg":"[initLogger] zap plugin initializing completed"}
+{"level":"info","ts":1586313508.2238111,"caller":"zap/zap.go:49","msg":"[initLogger] zap plugin initializing completed"}
+{"level":"info","ts":1586313512.180147,"caller":"handler/employeeHander.go:63","msg":"request start123123"}
+{"level":"info","ts":1586313512.23322,"caller":"handler/employeeHander.go:118","msg":"Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOjEwMDAzLCJVc2VyTmFtZSI6IlBhcnRvIn0.J0JPwc4IPBg4HKXL1S1Y3ixD1XZzkPJDF7rj8wdCuAo"}
+{"level":"info","ts":1586316904.456319,"caller":"zap/zap.go:49","msg":"[initLogger] zap plugin initializing completed"}
+{"level":"info","ts":1586316935.212207,"caller":"zap/zap.go:49","msg":"[initLogger] zap plugin initializing completed"}
+{"level":"info","ts":1586316963.799055,"caller":"handler/employeeHander.go:63","msg":"request start123123"}
+{"level":"info","ts":1586316963.842633,"caller":"handler/employeeHander.go:118","msg":"Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOjEwMDAzLCJVc2VyTmFtZSI6IlBhcnRvIn0.J0JPwc4IPBg4HKXL1S1Y3ixD1XZzkPJDF7rj8wdCuAo"}
+{"level":"info","ts":1586316965.045645,"caller":"handler/employeeHander.go:63","msg":"request start123123"}
+{"level":"info","ts":1586316965.070223,"caller":"handler/employeeHander.go:118","msg":"Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOjEwMDAzLCJVc2VyTmFtZSI6IlBhcnRvIn0.J0JPwc4IPBg4HKXL1S1Y3ixD1XZzkPJDF7rj8wdCuAo"}
+{"level":"info","ts":1586317015.645437,"caller":"handler/employeeHander.go:63","msg":"request start123123"}
+{"level":"info","ts":1586317015.673643,"caller":"handler/employeeHander.go:118","msg":"Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOjEwMDAzLCJVc2VyTmFtZSI6IlBhcnRvIn0.J0JPwc4IPBg4HKXL1S1Y3ixD1XZzkPJDF7rj8wdCuAo"}
+{"level":"info","ts":1586317016.427163,"caller":"handler/employeeHander.go:63","msg":"request start123123"}
+{"level":"info","ts":1586317016.461153,"caller":"handler/employeeHander.go:118","msg":"Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOjEwMDAzLCJVc2VyTmFtZSI6IlBhcnRvIn0.J0JPwc4IPBg4HKXL1S1Y3ixD1XZzkPJDF7rj8wdCuAo"}
+{"level":"info","ts":1586317095.7050612,"caller":"zap/zap.go:49","msg":"[initLogger] zap plugin initializing completed"}
+{"level":"info","ts":1586317106.642752,"caller":"handler/employeeHander.go:63","msg":"request start123123"}
+{"level":"info","ts":1586317106.721995,"caller":"handler/employeeHander.go:118","msg":"Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOjEwMDAzLCJVc2VyTmFtZSI6IlBhcnRvIn0.J0JPwc4IPBg4HKXL1S1Y3ixD1XZzkPJDF7rj8wdCuAo"}

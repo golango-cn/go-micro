@@ -19,7 +19,7 @@ func  parseToken(tk string) (c jwt.MapClaims, err error) {
 		if !ok {
 			return nil, fmt.Errorf("不合法的token格式: %v", token.Header["alg"])
 		}
-		return []byte(config.AppConfig.Jwt.SecretKey), nil
+		return []byte(config.AppConfig.App.Jwt.SecretKey), nil
 	})
 
 	// jwt 框架自带了一些检测，如过期，发布者错误等

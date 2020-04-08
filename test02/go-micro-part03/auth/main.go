@@ -6,7 +6,7 @@ import (
 	"github.com/micro/cli/v2"
 	"github.com/micro/go-micro/v2"
 	"github.com/micro/go-micro/v2/broker"
-	log "github.com/micro/go-micro/v2/logger"
+	//log "github.com/micro/go-micro/v2/logger"
 	"github.com/micro/go-micro/v2/registry"
 	"github.com/micro/go-micro/v2/registry/etcd"
 	"github.com/micro/go-plugins/broker/rabbitmq/v2"
@@ -17,10 +17,16 @@ import (
 	"go-micro/go-micro-part03/basic/db"
 	auth "go-micro/go-micro-part03/proto"
 
+	z "go-micro/go-micro-part03/plugins/zap"
+
 	//"github.com/micro/go-plugins/broker/rabbitmq/v2"
 )
 
+
+var  log     = z.GetLogger()
+
 func main() {
+
 	// 初始化配置、数据库等信息
 	basic.Init()
 	// 初始化redis
@@ -78,14 +84,14 @@ func main() {
 
 	// 启动服务
 	if err := service.Run(); err != nil {
-		log.Fatal(err)
+		log.Fatal(err.Error())
 	}
 }
 
 
 // Alternatively a function can be used
 func subEv(ctx context.Context,msg interface{}) error {
-	log.Infof("[pubsub.2] Received event %#v\n", msg)
+	log.Info(fmt.Sprint("[pubsub.2] Received event %#v\n", msg))
 	// do something with event
 	return nil
 }

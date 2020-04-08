@@ -11,6 +11,7 @@ import (
 	"github.com/micro/go-micro/v2/registry/etcd"
 	"github.com/micro/go-micro/v2/web"
 	"go-micro/go-micro-part03/basic/config"
+	_ "go-micro/go-micro-part03/plugins/zap"
 	"go-micro/go-micro-part03/web/handler"
 )
 

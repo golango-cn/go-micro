@@ -2,3 +2,7 @@
 
 .idea/
 .idea/workspace.xml
+
+*.log
+logs/
+*.sum
