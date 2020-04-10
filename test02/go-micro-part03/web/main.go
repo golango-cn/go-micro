@@ -2,6 +2,10 @@ package main
 
 import (
 	"fmt"
+	"github.com/afex/hystrix-go/hystrix"
+	"go-micro/go-micro-part03/plugins/breaker"
+	"net"
+	"net/http"
 
 	"go-micro/go-micro-part03/basic"
 
@@ -16,6 +20,11 @@ import (
 )
 
 func main() {
+
+	hystrixStreamHandler := hystrix.NewStreamHandler()
+	hystrixStreamHandler.Start()
+	go http.ListenAndServe(net.JoinHostPort("", "81"), hystrixStreamHandler)
+
 	// 初始化配置
 	basic.Init()
 
@@ -44,7 +53,11 @@ func main() {
 	// 员工信息
 	service.HandleFunc("/employee/employees", handler.GetEmployees)
 	// 登录
-	service.HandleFunc("/employee/login", handler.Login)
+	//service.HandleFunc("/employee/login", handler.Login)
+	handlerLogin := http.HandlerFunc(handler.Login)
+	service.Handle("/employee/login", breaker.BreakerWrapper(handlerLogin))
+
+
 	// 退出登录
 	service.HandleFunc("/employee/logout", handler.Logout)
 

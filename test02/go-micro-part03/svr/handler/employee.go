@@ -2,6 +2,7 @@ package handler
 
 import (
 	"context"
+	"fmt"
 	"go-micro/go-micro-part03/proto/common"
 	"go-micro/go-micro-part03/svr/model"
 	go_svr_proto_proto "go-micro/go-micro-part03/proto"
@@ -11,6 +12,9 @@ type EmployeeHander struct {
 }
 
 func (e *EmployeeHander) Login(ctx context.Context, requ *go_svr_proto_proto.LoginRequest, resp *go_svr_proto_proto.LoginResponse) error {
+
+	fmt.Println("Login方法被调用")
+
 	resp.BaseResponse = &common.BaseResponse{
 		IsSuccess:    true,
 		ErrorMessage: "测试成功",

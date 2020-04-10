@@ -13,6 +13,9 @@ import (
 
 	z "go-micro/go-micro-part03/plugins/zap"
 	us "go-micro/go-micro-part03/proto"
+
+	hystrix_go "github.com/afex/hystrix-go/hystrix"
+	hystrix "github.com/micro/go-plugins/wrapper/breaker/hystrix/v2"
 )
 
 var employeeService us.EmployeeService
@@ -21,8 +24,21 @@ var tokenService us.TokenService
 var log = z.GetLogger()
 
 func Init() {
-	employeeService = us.NewEmployeeService("mu.micro.book.srv.employee", client.DefaultClient)
-	tokenService = us.NewTokenService("mu.micro.book.srv.auth", client.DefaultClient)
+
+	hystrix_go.DefaultVolumeThreshold = 1
+	hystrix_go.DefaultErrorPercentThreshold = 1
+	cl := hystrix.NewClientWrapper()(client.DefaultClient)
+
+	cl.Init(
+		client.Retries(3),
+		client.Retry(func(ctx context.Context, req client.Request, retryCount int, err error) (bool, error) {
+			fmt.Println(req.Method(), retryCount, " client retry")
+			return true, nil
+		}),
+	)
+
+	employeeService = us.NewEmployeeService("mu.micro.book.srv.employee", cl)
+	tokenService = us.NewTokenService("mu.micro.book.srv.auth", cl)
 }
 
 // GetEmployees 获取用户信息

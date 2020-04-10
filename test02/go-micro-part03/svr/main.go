@@ -10,9 +10,9 @@ import (
 	"go-micro/go-micro-part03/basic"
 	"go-micro/go-micro-part03/basic/config"
 	"go-micro/go-micro-part03/basic/db"
-	"go-micro/go-micro-part03/svr/handler"
-
 	s "go-micro/go-micro-part03/proto"
+	"go-micro/go-micro-part03/svr/handler"
+	"time"
 )
 
 func main(){
@@ -29,6 +29,8 @@ func main(){
 		micro.Name("mu.micro.book.srv.employee"),
 		micro.Registry(micReg),
 		micro.Version("latest"),
+		micro.RegisterTTL(time.Second*15),
+		micro.RegisterInterval(time.Second*10),
 	)
 
 	// 服务初始化

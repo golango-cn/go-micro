@@ -2,3 +2,11 @@
 micro --registry=etcd list services
 
 micro --registry=etcd get service mu.micro.book.srv.auth
+
+micro --registry=etcd get service mu.micro.book.srv.employee|grep protoc
+
+当节点出现故障自动断掉，但集群中仍然有该节点时，可手动移除
+
+### 移除集群中的节点
+micro --registry=etcd deregister service \
+'{"name": "mu.micro.book.srv.employee", "version": "latest", "nodes": [{"id": "mu.micro.book.srv.employee-d50c3db9-84b4-4e79-91ee-a59d2f634651", "address": "192.168.31.233", "port": 58169}]}'
