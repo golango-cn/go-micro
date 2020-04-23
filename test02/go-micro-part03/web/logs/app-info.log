@@ -375,3 +375,4 @@
 {"level":"info","ts":1586511078.457026,"caller":"handler/employeeHander.go:134","msg":"Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOjEwMDAzLCJVc2VyTmFtZSI6IlBhcnRvIn0.J0JPwc4IPBg4HKXL1S1Y3ixD1XZzkPJDF7rj8wdCuAo"}
 {"level":"info","ts":1586511078.778156,"caller":"handler/employeeHander.go:79","msg":"request start123123"}
 {"level":"info","ts":1586511078.7959511,"caller":"handler/employeeHander.go:134","msg":"Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOjEwMDAzLCJVc2VyTmFtZSI6IlBhcnRvIn0.J0JPwc4IPBg4HKXL1S1Y3ixD1XZzkPJDF7rj8wdCuAo"}
+{"level":"info","ts":1587631342.747642,"caller":"zap/zap.go:49","msg":"[initLogger] zap plugin initializing completed"}

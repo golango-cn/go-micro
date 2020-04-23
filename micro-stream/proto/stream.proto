@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package proto;
+
+service SteamService {
+    rpc GetStream1 (stream StreamRequest) returns (stream StreamResponse) { }
+    rpc GetStream2 (StreamRequest) returns (stream StreamResponse) { }
+    rpc GetStream3 (stream StreamRequest) returns (StreamResponse) { }
+}
+
+
+message StreamRequest {
+    int32 id = 1;
+    string firstName = 2;
+}
+
+message StreamResponse {
+    int32 id = 1;
+    string message = 2;
+}

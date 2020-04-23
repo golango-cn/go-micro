@@ -1,0 +1,4 @@
+GET http://localhost:8091/stream1
+Accept: application/json
+
+###
