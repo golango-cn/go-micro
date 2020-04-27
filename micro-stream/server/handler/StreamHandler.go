@@ -5,6 +5,7 @@ import (
 	ss "go-micro/micro-stream/proto"
 	"log"
 	"os"
+	"time"
 )
 
 type StreamHandler struct {
@@ -32,11 +33,21 @@ func (s StreamHandler) GetStream2(ctx context.Context, request *ss.StreamRequest
 	logger := log.New(os.Stdout, "[Server] ", 1)
 	logger.Println("服务端接收数据", request)
 
-	stream.Send(&ss.StreamResponse{
-		Id:      12312,
-		Message: "From Server",
-	})
+	ch := make(chan int)
+	go func() {
+		for {
+			ch <- 1
+			time.Sleep(time.Second * 5)
+		}
+	}()
 
+	for {
+		i := <-ch
+		stream.Send(&ss.StreamResponse{
+			Id:      int32(i),
+			Message: "From Server",
+		})
+	}
 	return nil
 
 }

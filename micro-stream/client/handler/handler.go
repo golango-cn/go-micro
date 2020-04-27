@@ -41,8 +41,10 @@ func Stream2(w http.ResponseWriter, r *http.Request) {
 		FirstName: "From Client",
 	})
 
-	recv, err := stream1.Recv()
-	logger.Println("客户端接收数据", recv, err)
+	for i := 0; i < 15; i++ {
+		recv, err := stream1.Recv()
+		logger.Println("客户端接收数据", i, recv, err)
+	}
 
 	fmt.Fprintln(w, "操作成功")
 

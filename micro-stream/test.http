@@ -1,4 +1,4 @@
-GET http://localhost:8091/stream1
+GET http://localhost:8091/stream2
 Accept: application/json
 
 ###
